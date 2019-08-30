@@ -24,7 +24,7 @@ RUN git clone --depth 1 https://github.com/tpoechtrager/osxcross.git /opt/osxcro
 
 WORKDIR /opt/osxcross/tarballs
 # Origin: https://github.com/docker/golang-cross/blob/master/osx-cross.sh
-RUN wget https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
+RUN wget -q https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
 
 WORKDIR /opt/osxcross
 RUN UNATTENDED=yes OSX_VERSION_MIN=10.8 ./build.sh
