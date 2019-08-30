@@ -60,17 +60,18 @@ RUN dpkg --add-architecture amd64 \
       flex \
       gem \
       git \
-      libssl1.1 \
+      libssl-dev \
       libtool \
-      libuuid1 \
-      libxml2 \
+      libxml2-dev \
       llvm-dev \
+      lzma-dev \
       mingw-w64 \
       pkg-config \
       rake \
       ruby \
       ruby-dev \
+      uuid-dev \
       wget \
-      zlib1g \
+      zlib1g-dev \
  && apt-get -yqq clean \
  && rm -rf /var/lib/apt/lists/*
