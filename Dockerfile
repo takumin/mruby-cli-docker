@@ -54,6 +54,7 @@ RUN dpkg --add-architecture amd64 \
       flex \
       gem \
       git \
+      llvm-7-dev \
       mingw-w64 \
       rake \
       ruby \
