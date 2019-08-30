@@ -20,7 +20,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/tpoechtrager/osxcross.git /opt/osxcross
+RUN git clone --depth 1 https://github.com/tpoechtrager/osxcross.git /opt/osxcross
 
 WORKDIR /opt/osxcross/tarballs
 RUN wget https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
