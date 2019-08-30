@@ -69,7 +69,7 @@ RUN dpkg --add-architecture arm64 \
       valac \
       wget \
       xz-utils \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
  && gem install fpm --no-document
 
 ONBUILD WORKDIR /home/mruby/code
