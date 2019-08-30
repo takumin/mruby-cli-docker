@@ -2,6 +2,8 @@ FROM debian:stable AS osxcross
 
 RUN apt-get -yqq update \
  && apt-get -yqq install --no-install-recommends \
+      autoconf \
+      automake \
       build-essential \
       ca-certificates \
       clang \
@@ -11,9 +13,11 @@ RUN apt-get -yqq update \
       libmpc-dev \
       libmpfr-dev \
       libssl-dev \
+      libtool \
       libxml2-dev \
       llvm-dev \
       lzma-dev \
+      pkg-config \
       uuid-dev \
       wget \
       zlib1g-dev \
@@ -42,6 +46,8 @@ RUN dpkg --add-architecture amd64 \
  && dpkg --add-architecture i386 \
  && apt-get -yqq update \
  && apt-get -yqq install --no-install-recommends \
+      autoconf \
+      automake \
       bison \
       build-essential \
       ca-certificates \
@@ -54,9 +60,13 @@ RUN dpkg --add-architecture amd64 \
       flex \
       gem \
       git \
+      libssl1.1 \
+      libtool \
       libuuid1 \
+      libxml2 \
       llvm-7-dev \
       mingw-w64 \
+      pkg-config \
       rake \
       ruby \
       wget \
