@@ -1,6 +1,7 @@
 FROM debian:stable AS osxcross
 
-RUN apt-get -yqq update \
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get -yqq update \
  && apt-get -yqq install --no-install-recommends \
       autoconf \
       automake \
@@ -40,7 +41,8 @@ LABEL maintainer "Takumi Takahashi <takumiiinn@gmail.com>"
 COPY --from=osxcross /opt/osxcross/target /opt/osxcross
 ENV PATH /opt/osxcross/bin:$PATH
 
-RUN dpkg --add-architecture amd64 \
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && dpkg --add-architecture amd64 \
  && dpkg --add-architecture arm64 \
  && dpkg --add-architecture armhf \
  && dpkg --add-architecture i386 \
