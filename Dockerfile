@@ -29,7 +29,9 @@ FROM debian:stable
 COPY --from=osxcross /opt/osxcross/target /opt/osxcross
 ENV PATH /opt/osxcross/bin:$PATH
 
-RUN apt-get update \
+RUN dpkg --add-architecture arm64 \
+ && dpkg --add-architecture armhf \
+ && apt-get update \
  && apt-get install -y --no-install-recommends \
       automake \
       bison \
