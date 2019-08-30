@@ -26,7 +26,7 @@ WORKDIR /opt/osxcross/tarballs
 RUN wget https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
 
 WORKDIR /opt/osxcross
-RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
+RUN UNATTENDED=yes OSX_VERSION_MIN=10.8 ./build.sh
 
 FROM debian:stable
 
