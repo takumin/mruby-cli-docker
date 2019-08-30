@@ -24,9 +24,6 @@ RUN apt-get install -y libssl-dev
 WORKDIR /opt/osxcross
 RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
-WORKDIR /opt/osxcross/tarballs
-RUN rm MacOSX10.10.sdk.tar.xz
-
 FROM debian:stable
 
 COPY --from=osxcross /opt/osxcross/target /opt/osxcross
