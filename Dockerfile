@@ -1,7 +1,7 @@
 FROM debian:stable AS osxcross
 
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
+RUN apt-get -yqq update \
+ && apt-get -yqq install --no-install-recommends \
       build-essential \
       ca-certificates \
       clang \
@@ -17,7 +17,7 @@ RUN apt-get update \
       uuid-dev \
       wget \
       zlib1g-dev \
- && apt-get clean \
+ && apt-get -yqq clean \
  && rm -rf /var/lib/apt/lists/*
 
 RUN git clone --depth 1 https://github.com/tpoechtrager/osxcross.git /opt/osxcross
@@ -40,8 +40,8 @@ RUN dpkg --add-architecture amd64 \
  && dpkg --add-architecture arm64 \
  && dpkg --add-architecture armhf \
  && dpkg --add-architecture i386 \
- && apt-get update \
- && apt-get install -y --no-install-recommends \
+ && apt-get -yqq update \
+ && apt-get -yqq install --no-install-recommends \
       bison \
       build-essential \
       ca-certificates \
@@ -58,5 +58,5 @@ RUN dpkg --add-architecture amd64 \
       rake \
       ruby \
       wget \
- && apt-get clean \
+ && apt-get -yqq clean \
  && rm -rf /var/lib/apt/lists/*
