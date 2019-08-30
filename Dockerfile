@@ -54,10 +54,12 @@ RUN dpkg --add-architecture amd64 \
       flex \
       gem \
       git \
+      libuuid1 \
       llvm-7-dev \
       mingw-w64 \
       rake \
       ruby \
       wget \
+      zlib1g \
  && apt-get -yqq clean \
  && rm -rf /var/lib/apt/lists/*
