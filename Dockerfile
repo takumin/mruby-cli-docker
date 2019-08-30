@@ -12,6 +12,9 @@ RUN apt-get update \
       libmpfr-dev \
       libssl-dev \
       libxml2-dev \
+      llvm-dev \
+      lzma-dev \
+      uuid-dev \
       wget \
       zlib1g-dev \
  && apt-get clean \
