@@ -1,25 +1,24 @@
 FROM debian:stable AS osxcross
 
-RUN apt-get update
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      build-essential \
+      clang \
+      cmake \
+      git \
+      libgmp-dev \
+      libmpc-dev \
+      libmpfr-dev \
+      libssl-dev \
+      libxml2-dev \
+      wget \
+      zlib1g-dev \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y git
 RUN git clone https://github.com/tpoechtrager/osxcross.git /opt/osxcross
 
-RUN apt-get install -y wget
 WORKDIR /opt/osxcross/tarballs
 RUN wget https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
-
-RUN apt-get install -y make
-RUN apt-get install -y cmake
-RUN apt-get install -y clang
-RUN apt-get install -y gcc
-RUN apt-get install -y g++
-RUN apt-get install -y zlib1g-dev
-RUN apt-get install -y libmpc-dev
-RUN apt-get install -y libmpfr-dev
-RUN apt-get install -y libgmp-dev
-RUN apt-get install -y libxml2-dev
-RUN apt-get install -y libssl-dev
 
 WORKDIR /opt/osxcross
 RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
@@ -70,7 +69,7 @@ RUN dpkg --add-architecture arm64 \
       valac \
       wget \
       xz-utils \
- && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
  && gem install fpm --no-document
 
 ONBUILD WORKDIR /home/mruby/code
