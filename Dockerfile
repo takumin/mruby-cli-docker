@@ -23,6 +23,7 @@ RUN apt-get update \
 RUN git clone --depth 1 https://github.com/tpoechtrager/osxcross.git /opt/osxcross
 
 WORKDIR /opt/osxcross/tarballs
+# Origin: https://github.com/docker/golang-cross/blob/master/osx-cross.sh
 RUN wget https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
 
 WORKDIR /opt/osxcross
