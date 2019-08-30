@@ -64,11 +64,12 @@ RUN dpkg --add-architecture amd64 \
       libtool \
       libuuid1 \
       libxml2 \
-      llvm-7-dev \
+      llvm-dev \
       mingw-w64 \
       pkg-config \
       rake \
       ruby \
+      ruby-dev \
       wget \
       zlib1g \
  && apt-get -yqq clean \
