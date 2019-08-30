@@ -10,5 +10,9 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Build Docker image
+      run: docker build . --file Dockerfile --tag mruby-cli:$(date +%s)
+    - name: Build Test binary
+      run: docker run --rm -v $(pwd)/test:/test mruby-cli make -C /test
+    - name: Running Test binary
+      run: ls -la $(pwd)/test
