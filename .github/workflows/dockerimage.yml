@@ -11,8 +11,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag mruby-cli:$(date +%s)
+      run: docker build . --file Dockerfile --tag takumi/mruby-cli:ci
     - name: Build Test binary
-      run: docker run --rm -v $(pwd)/test:/test mruby-cli make -C /test
-    - name: Running Test binary
-      run: ls -la $(pwd)/test
+      run: docker run --rm -v $(pwd)/test:/test takumi/mruby-cli:ci make -C /test
+    - name: Register Qemu binary
+      run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    - name: Running Test binary - x86_64-linux-gnu
+      run: test/x86_64-linux-gnu-gcc
+    - name: Running Test binary - i686-linux-gnu
+      run: docker run --rm -v $(pwd)/test:/test multiarch/qemu-user-static:i386 /test/i686-linux-gnu-gcc
+    - name: Running Test binary - aarch64-linux-gnu
+      run: docker run --rm -v $(pwd)/test:/test multiarch/qemu-user-static:aarch64 /test/aarch64-linux-gnu-gcc
+    - name: Running Test binary - arm-linux-gnueabihf
+      run: docker run --rm -v $(pwd)/test:/test multiarch/qemu-user-static:arm /test/arm-linux-gnueabihf-gcc
