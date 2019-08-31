@@ -76,4 +76,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       wget \
       zlib1g-dev \
  && apt-get -yqq clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && echo '/opt/osxcross/lib' > /etc/ld.so.conf.d/osxcross \
+ && ldconfig
